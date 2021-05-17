@@ -1,0 +1,58 @@
+/******************************************************************************
+
+                            Sort an array in ascending order by flipping (exchanging) 2 adjacent integers not in the correct order until there is no such pair.
+
+The leftmost swappable pair must be swapped first, i.e. the first pair encountered while going from left to right, which is in the opposite (descending order) should be swapped. Then the whole process should be repeated.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void swap(int *a,int *b){
+    int temp;
+    temp=*a;
+    *a=*b;
+    *b=temp;
+}
+int main()
+{
+    int i,j,n,arr[n];
+    printf("Enter n=");
+    scanf("%d",&n);
+    printf("Enter numbers=");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    
+    while(1)
+    {
+        for(i=0;i<n;i++)
+        {
+            j=i+1;
+            if(arr[i]>arr[j])
+            {
+            swap(&arr[i],&arr[j]); // swap if i>j
+                for(i=0;i<n;i++)
+                {
+                printf("%d ",arr[i]);
+                }
+            
+            printf("\n");
+            break;        // to again start from i=0 and j=0(first pair)
+            }
+            else
+            {
+                if (i==n-2) //i and j are last pair
+                exit(0);
+                else
+                continue; // i is not > j and i&j are not last pair
+            }
+        }
+        
+        
+    }
+
+    
+}

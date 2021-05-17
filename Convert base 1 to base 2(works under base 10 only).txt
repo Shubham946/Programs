@@ -1,0 +1,55 @@
+/******************************************************************************
+
+Convert number from base 1 to base 2. Works under base 10 only.
+eg. Base 6 to base 9 
+    Ocatal to binary
+    etc.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <math.h>
+#include<stdlib.h>
+
+int
+main ()
+{
+  int b1, b2, num, dec = 0, result = 0, i = 0, temp;
+  printf ("Enter number:");	//inputs
+  scanf ("%d", &num);
+  printf ("\nWhats the base? ");
+  scanf ("%d", &b1);
+  printf ("\nConvert it to base:");
+  scanf ("%d", &b2);
+  //logic to convert base 1 to decimal
+  while (num > 0)
+    {
+      temp = num % 10;
+      if (temp >= b1)
+	{
+	  printf ("\ninvalid number\n");
+	  exit (0);
+	}
+      num /= 10;
+      temp = temp * (int) pow (b1, i);
+      dec = dec + temp;
+      i++;
+    }
+  //logic to convert decimal to base b2
+  if (b2 == 10)
+    printf ("Number in base 10 :%d", dec);
+  else{
+  temp = 0;
+  i = 0;
+  while (dec > 0)
+    {
+      temp = dec % b2;
+      dec /= b2;
+      temp = temp * (int) pow (10, i);
+      result = result + temp;
+      i++;
+    }
+
+  printf ("Number in base %d :%d", b2, result);
+}
+}

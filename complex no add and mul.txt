@@ -1,0 +1,37 @@
+/******************************************************************************
+
+Program to add and multiply to complex numbers. I have implemented 'FOIL' method for multiplication(Google to know more).
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ()
+{
+  int a, b, c, d, F, O, I, L, real, img, addimg;
+  //printf ("Enter 1st no:");
+  scanf ("%d", &a);
+  scanf ("%d", &b);
+  //printf ("Enter 2nd no:");
+  scanf ("%d", &c);
+  scanf ("%d", &d);
+  F = a * c;
+  O = a * d;
+  I = b * c;
+  L = -(b * d);
+  real = F + L;
+  img = O + I;
+  printf("%d",a+c);// print add real part
+  addimg=(b+d);
+  if(addimg<0)
+  printf("%di\n",addimg); //print add imaginary part if negative
+  else
+  printf("+%di\n",addimg); //print add imaginary part if positive
+  printf ("%d", real); // print mul real part
+  if(img<0)
+  printf("%di",img); //print mul imaginary part if negative
+  else
+  printf("+%di",img); //print mul imaginary part if positive
+
+}

@@ -1,0 +1,79 @@
+/******************************************************************************
+
+Accept a number n from user. Create n*n square 2D array. 
+accept elements of this array from user. Print elements in clockwise spiral order.                       
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int
+main ()
+{
+  int n, m, i, j, k, p;
+  printf ("Enter array dimention :");
+  scanf ("%d", &n);
+  int A[n][n];
+  int size = (n * n);
+  int B[size];
+  for (i = 0; i < n; i++)
+    {				//input
+      for (j = 0; j < n; j++)
+	{
+	  scanf ("%d", &A[i][j]);
+	}
+    }
+  //logic
+  m = (n / 2); // (floor)n/2 times we need to follow the process as only these many spirals are possible in matrix
+  k = 0; //variable to traverse B matrix
+  p = 0;
+  while (p < m)
+    {
+
+      i = p;
+      for (j = p; j < n; j++) //left->right
+	{
+
+	  B[k] = A[i][j];
+	  k++;
+	}
+      j--;
+      for (i = p + 1; i < n; i++) //up->down
+	{
+	  B[k] = A[i][j];
+	  k++;
+
+	}
+      i--;
+
+      for (j = n - 2; j >= p; j--) //right->left
+	{
+
+
+	  B[k] = A[i][j];
+	  k++;
+
+	}
+      j++;
+
+      for (i = n - 2; i > p; i--) //down->up
+	{
+
+	  B[k] = A[i][j];
+	  k++;
+
+	}
+      p++; //to leave 1 line and expolre inner spiral from left
+      n--; //to leave alredy visited outer spiral
+    }
+  if (size % 2 != 0)		//check if matrix size is even or odd(printing remaining centre ele in case of odd matrix)
+    B[k] = A[++i][++j];
+  for (i = 0; i < size; i++)
+    {				//output
+
+      printf ("%d\n", B[i]);
+    }
+
+
+
+}

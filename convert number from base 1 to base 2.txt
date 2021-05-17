@@ -1,0 +1,104 @@
+/******************************************************************************
+
+ Accept one number from user. Ask its base. Ask in which base you want to convert it. Convert the number in requested base.
+It works for bases ranging from 2(binary) to 16(Hex) including all in between. Coverd incorrect input cases for all bases.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <math.h>
+#include<stdlib.h>
+#include<string.h>
+#define MAX 50
+
+int
+main ()
+{
+  int b1, b2, i,j, ex = 0, dec = 0, temp=-1;
+  char num[MAX];
+  int result[MAX]={0};
+  printf ("Enter number:");	//inputs
+  scanf ("%s", num);
+  printf ("\nWhats the base? ");
+  scanf ("%d", &b1);
+  printf ("\nConvert it to base:");
+  scanf ("%d", &b2);
+  //logic to convert base 1 to decimal
+  for (i = strlen (num) - 1; i >= 0; i--)
+    {
+      if ((num[i] - '0') < 10) //set temp from 1-9
+	{
+	  temp = num[i] - '0';
+
+	}
+      if (num[i] == 'A' || num[i] == 'a') //set temp from A-F
+	temp = 10;
+      if (num[i] == 'B' || num[i] == 'b')
+	temp = 11;
+      if (num[i] == 'C' || num[i] == 'c')
+	temp = 12;
+      if (num[i] == 'D' || num[i] == 'd')
+	temp = 13;
+      if (num[i] == 'E' || num[i] == 'e')
+	temp = 14;
+      if (num[i] == 'F' || num[i] == 'f')
+	temp = 15;
+	
+	//printf("temp : %d" ,temp);
+	//check validity of temp
+	if(temp>=b1){
+	    printf("Invalid Number");
+	    exit(0);
+	}
+    if(temp==-1){
+       printf("Invalid Input");
+	    exit(0); 
+    }
+      temp = temp * pow (b1, ex);
+
+      dec = dec + temp;
+      ex++;
+      temp=-1;
+
+    }
+  //printf ("dec: %d", dec);
+  //Convert Dec to b2
+  if (b2 == 10)
+    printf ("Number in base 10 :%d", dec);
+  else{
+  temp = 0;
+  i = 0;
+  while (dec > 0)
+    {
+      temp = dec % b2;
+      dec /= b2;
+      result[i]= temp;
+      i++;
+    }
+    printf ("Number in base %d \n", b2);
+    for(j=i-1;j>=0;j--){
+        
+    if(result[j] <= 9)    
+    printf("%d" ,result[j]);
+    else{
+         if(result[j] == 10)  
+         printf("A");
+         if(result[j] == 11)  
+         printf("B");
+         if(result[j] == 12)  
+         printf("C");
+         if(result[j] == 13)  
+         printf("D");
+         if(result[j] == 14)  
+         printf("E");
+         if(result[j] == 15)  
+         printf("F");
+        
+    }
+    
+        
+    }
+    
+}
+  
+}

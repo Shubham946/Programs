@@ -1,0 +1,50 @@
+/******************************************************************************
+The int datatype has a limitation of maximum value. It can only store values upto a certain limit. So what we want to do is take a very big integer and add 1 to it.
+
+ 
+
+INPUT FORMAT:
+
+First line contains number of digits in the integer, n. This is at maximum 50.
+
+The next line consists of all the digits of the integer, separated by spaces.
+
+You are required to add 1 to this integer and output the digits of the resulting integer (without spaces)
+
+ 
+
+Sample input:
+12
+8 7 5 1 2 5 4 8 7 5 4 5
+
+Sample output:
+875125487546
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{
+    int n,i;
+    printf("Enter n=");
+    scanf("%d",&n);
+    int arr[n];
+    for(i=0;i<n;i++)
+    {
+         scanf("%d",&arr[i]);
+    }
+    arr[n-1]=arr[n-1]+1;
+    for(i=n-1;i>=0;i--)
+    {
+        if(arr[i]>9){
+            arr[i]=0;
+            arr[i-1]++;
+        }
+    }
+     for(i=0;i<n;i++)
+    {
+         printf("%d",arr[i]);
+    }
+   
+}

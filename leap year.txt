@@ -1,0 +1,53 @@
+/******************************************************************************
+Leap years are an interesting way of putting together lost time over the previous 4 years. These are those years when February has 29 days. One of your friends Raj was born on 29th of February. He wishes to know how many times till date he lived through his actual birthday (29th February). Take his birth year and present year as inputs and print the number of times he has experienced 29th of February. Note if present year is a leap year, do include its 29th of February as well. You may also display an error as “Birth Year is incorrect” if the birth year entered is not a leap year.
+
+Note: Leap years are years which are multiples of 4 with the exception of years which are divisble by 100 but not by 400.
+
+Sample input 1:
+1996 2019
+
+Sample output 1:
+6
+
+Sample input 2:
+1997 2019
+
+Sample output 2:
+Birth year is incorrect
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdbool.h>
+ bool isLeaf(int L)
+    {
+        if((L%4==0 && L%100!=0)||(L%4==0 && L%400==0))
+        return true;
+        else
+        return false;
+    }
+int main()
+{
+    int b,L,i,count=0,c;
+    printf("Enter birth year=");
+    scanf("%d",&b);
+    printf("Enter current year=");
+    scanf("%d",&c);
+    if(isLeaf(b))
+    {
+        for(i=b ; i<=c ;i=i+4 )
+        {
+            //if(isLeaf(i))
+            count++;
+        }
+        if(isLeaf(c))
+        count--;
+        printf("%d\n",count);
+        
+    }
+    else
+    {
+        printf("birth year is not leap");
+    }
+   
+}
